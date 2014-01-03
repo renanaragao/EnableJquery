@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <style type="text/css">
+            body{ margin: 0; padding: 0}
+            input[type=text]{width: 100px;}
+        </style>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script type="text/javascript" src="PluginjQuery.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#chkEnableDisableSelect').click(function () {
+                    if($(this).is(':checked')) 
+						DesbloquearElemento('selOpcoes');
+					else
+						BloquearElemento('selOpcoes');
+                });
+
+                $('#chkEnableDisableInput').click(function () {
+					if($(this).is(':checked')) 
+						DesbloquearElemento('txtExemplo');
+					else
+						BloquearElemento('txtExemplo');
+                });
+
+                $('#chkEnableDisableDiv').click(function () {
+					if($(this).is(':checked')) 
+						DesbloquearElemento('divExemplo');
+					else
+						BloquearElemento('divExemplo');
+                });
+
+                $('#divExemplo').click(function(){
+                    alert('Evento click da div.');
+                });
+				
+				$('#btnBloquearLinha').click(function(){
+					BloquearLinha($('#numberIndexLinha').val());
+				});
+				
+				$('#btnDesbloquearLinha').click(function(){
+					DesbloquearLinha($('#numberIndexLinha').val());
+				});
+
+            });
+			
+			function DesbloquearLinha(indexRow){
+				$('table tr:eq(' + indexRow + ')').enable();
+			}
+			
+			function BloquearLinha(indexRow){
+				$('table tr:eq(' + indexRow + ')').disable();
+			}
+
+            function BloquearElemento(idElemento) {
+                $('#' + idElemento).disable();
+            }
+			
+			function DesbloquearElemento(idElemento) {
+                $('#' + idElemento).enable();
+            }
+
+        </script>
+        <title>Plugin jQuery</title>
+    </head>
+
+    <body>
+        <div style="width: 600px;">
+            <fieldset>
+                <legend>select</legend>
+                <select id="selOpcoes">
+                    <option>Opção 1</option>
+                    <option>Opção 2</option>
+                    <option>Opção 3</option>
+                </select>
+                <input type="checkbox" checked="checked" id="chkEnableDisableSelect" /> <label for="chkEnableDisableSelect">Enable</label>
+            </fieldset>
+            <fieldset>
+                <legend>input</legend>
+                <input type="text" id="txtExemplo" />
+                <input type="checkbox" checked="checked" id="chkEnableDisableInput" /> <label for="chkEnableDisableInput">Enable</label><br />
+            </fieldset>
+            <fieldset>
+                <legend>div</legend>
+                <div id="divExemplo" style="width: 400px; height: 200px; border: 1px solid #000;">
+                    <input type="text">
+                    <input type="button" value="Button" />
+                </div>
+                <input type="checkbox" checked="checked" id="chkEnableDisableDiv" /> <label for="chkEnableDisableDiv">Enable</label><br />
+            </fieldset>
+			<fieldset>
+				<legend>tr/th</legend>
+				<div style="margin-bottom: 22px;">
+					<label for="numberIndexLinha">Informe a linha a ser bloqueada.</label><br />
+					<input id="numberIndexLinha" type="number" min="0" max="6" /><br />
+					<input id="btnBloquearLinha" type="button" value="Bloquear linha informada" /><br />
+					<input type="button" id="btnDesbloquearLinha" value="Desbloquear linha informada" />
+				</div>
+				<table border="1">
+					<tr>
+						<td><input type="button" value="Olá Mundo" onclick="alert('Olá Mundo');" />Célula-1</td>
+						<td>Célula-2</td>
+						<td>Célula-3</td>
+					</tr>
+					<tr>
+						<td><input type="button" value="Olá Mundo" onclick="alert('Olá Mundo');" />Célula-1</td>
+						<td>Célula-2</td>
+						<td>Célula-3</td>
+					</tr>
+					<tr>
+						<td><input type="button" value="Olá Mundo" onclick="alert('Olá Mundo');" />Célula-1</td>
+						<td>Célula-2</td>
+						<td>Célula-3</td>
+					</tr>
+					<tr>
+						<td><input type="button" value="Olá Mundo" onclick="alert('Olá Mundo');" />Célula-1</td>
+						<td>Célula-2</td>
+						<td>Célula-3</td>
+					</tr>
+					<tr>
+						<td><input type="button" value="Olá Mundo" onclick="alert('Olá Mundo');" />Célula-1</td>
+						<td>Célula-2</td>
+						<td>Célula-3</td>
+					</tr>
+					<tr>
+						<td><input type="button" value="Olá Mundo" onclick="alert('Olá Mundo');" />Célula-1</td>
+						<td>Célula-2</td>
+						<td>Célula-3</td>
+					</tr>
+					<tr>
+						<td><input type="button" value="Olá Mundo" onclick="alert('Olá Mundo');" />Célula-1</td>
+						<td>Célula-2</td>
+						<td>Célula-3</td>
+					</tr>
+				</table>
+			</fieldset>
+        </div>
+    </body>
+</html>
